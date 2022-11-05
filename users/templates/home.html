@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container py-5">
+	<h1>Home</h1>
+         {% if user.is_authenticated %}
+                <p class="text-center">Welcome back, {{user.username}}</p>
+                <p class="text-center">Click here to <a href="/logout">logout</a></p>
+                <p class="text-center">Click here to <a href="/change-password">change your password</a></p>
+
+         {% else %}
+            <p class="text-center">Click here to <a href="/login">login</a></p>
+            <p class="text-center">Click here to <a href="/signup">signup</a></p>
+        {% endif %}
+    {% if messages %}
+	<ul>
+		{% for message in messages %}
+	   		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+		{% endif %}
+
+</div>
+
+{% endblock %}
